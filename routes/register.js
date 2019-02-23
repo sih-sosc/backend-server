@@ -14,3 +14,5 @@ router.post('/', function(req, res){
             res.status(200).json(usr);
     });
 });
+
+module.exports = router;
