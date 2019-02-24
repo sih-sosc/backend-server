@@ -1,10 +1,16 @@
-var express = require('express');
-var router = express.Router();
-var AuthController = require('../controllers/AuthController');
+const express = require('express');
+const router = express.Router();
+const AuthController = require('../controllers/AuthController');
+const user = require('../models/user');
 
 /* GET home page. */
-router.get('/', AuthController.verify_token,function(req, res, next) {
-  res.json({ title: 'Express' });
+router.get('/', AuthController.verify_token, function(req, res, next) {
+ user.find({email: req.decoded.email}, (err, _req) => {
+    if(err)
+      res.status(500).send(err);
+    else
+      res.status(200).json(_req);
+ });
 });
 
 module.exports = router;
