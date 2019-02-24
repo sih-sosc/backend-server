@@ -1,6 +1,5 @@
 /*      LOGIN VALIDATIONS       */
 const express = require('express');
-const mongoose = require('mongoose');
 const user = require('../models/user');
 const jwt = require('jsonwebtoken');
 const router = express.Router();
