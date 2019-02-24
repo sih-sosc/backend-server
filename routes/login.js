@@ -13,7 +13,7 @@ router.post('/', AuthController._sign_in_checks, function(req, res) {
 
         // Check if Document is Empty
         if(!user || user.length == 0) 
-            res.status(200).send('No Account Found');
+            res.status(404).send('No Account Found');
         
         /*
         //Compare user entered Password with Hash
