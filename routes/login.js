@@ -25,7 +25,7 @@ router.post('/', AuthController._sign_in_checks, function(req, res) {
             */
         else {
             //Sign Token and Return it
-            let token = jwt.sign({ email: user.email}, 'secret', {
+            let token = jwt.sign({ email: req.body.email}, "secret", {
                 expiresIn: 80000
             });
             return res.status(200).json({
