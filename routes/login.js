@@ -14,7 +14,6 @@ router.post('/', AuthController._sign_in_checks, function(req, res) {
         // Check if Document is Empty
         if(!user || user.length == 0) {
             res.status(200).send('No Account Found');
-            console.log("NO accounts");
         }
         
         /*
@@ -29,7 +28,6 @@ router.post('/', AuthController._sign_in_checks, function(req, res) {
             let token = jwt.sign({ email: req.body.email}, "secret", {
                 expiresIn: 80000
             });
-            console.log(token);
             return res.status(200).json({
                 role: user.role,
                 token
