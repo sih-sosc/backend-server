@@ -10,7 +10,6 @@ router.post('/', AuthController._sign_in_checks, function(req, res) {
     
     //Find given Email in Database
     user.find({email: req.body.email, password: req.body.password}).then( user => {
-
         // Check if Document is Empty
         if(!user || user.length == 0) {
             res.status(200).send('No Account Found');
@@ -29,7 +28,7 @@ router.post('/', AuthController._sign_in_checks, function(req, res) {
                 expiresIn: 80000
             });
             return res.status(200).json({
-                role: user.role,
+                role: user[0].role,
                 token
             });
         }
