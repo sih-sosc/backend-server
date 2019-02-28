@@ -1,47 +1,24 @@
-//Model for User
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const userSchema = new Schema ({
-    email : {
+const userSchema = new Schema({
+    email: {
         type: String,
-        required: true,
-        unique: true
-    },
-    password : {
-        type: String,
+        unique: true,
         required: true
     },
-    full_name : {
+    password: {
         type: String,
         required: true
     },
     phone_number: {
         type: String,
-        required: true
+        required: false
     },
-    permissions: {
-        manage_user: {
-            type: Boolean,
-            default: false
-        },
-        send_email: {
-            type: Boolean,
-            default: false
-        },
-        send_sms: {
-            type: Boolean,
-            default: false
-        },
-        manage_service: {
-            type: Boolean,
-            default: false
-        },
-        manage_logs: {
-            type: Boolean,
-            default: false
-        }
+    role: {
+        type: String,
+        default: "user"
     }
 });
 
-module.exports = mongoose.model('Users',userSchema);
+module.exports = mongoose.model('Users', userSchema);
