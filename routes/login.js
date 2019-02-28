@@ -12,8 +12,10 @@ router.post('/', AuthController._sign_in_checks, function(req, res) {
     user.find({email: req.body.email, password: req.body.password}).then( user => {
 
         // Check if Document is Empty
-        if(!user || user.length == 0) 
-            res.status(404).send('No Account Found');
+        if(!user || user.length == 0) {
+            res.status(200).send('No Account Found');
+            console.log("NO accounts");
+        }
         
         /*
         //Compare user entered Password with Hash
@@ -27,8 +29,9 @@ router.post('/', AuthController._sign_in_checks, function(req, res) {
             let token = jwt.sign({ email: req.body.email}, "secret", {
                 expiresIn: 80000
             });
+            console.log(token);
             return res.status(200).json({
-                message: 'Successfully Signed In',
+                role: user.role,
                 token
             });
         }
