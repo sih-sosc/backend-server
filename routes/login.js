@@ -16,7 +16,6 @@ router.post('/', AuthController._sign_in_checks, function(req, res) {
             res.status(200).send('No Account Found');
             console.log("NO accounts");
         }
-            
         
         /*
         //Compare user entered Password with Hash
