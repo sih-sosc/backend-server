@@ -15,6 +15,14 @@ const contactSchema = new Schema ({
         type: String,
         required: true,
         unique: true
+    },
+    created_by: {
+        type: String,
+        required: true
+    }
+},{
+    timestamps:{
+        createdAt: 'created_at'
     }
 });
 
