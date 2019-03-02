@@ -1,6 +1,24 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
+const contactListSchema = new Schema({
+    name: {
+        type: String,
+        required: true
+    },
+    createdBy: {
+        type: String,
+        required: true
+    },
+    contactIDs: {
+        type: Array
+    }
+}, {
+        timestamps: {
+            createdAt: 'created_at'
+        }
+    });
+
 const userSchema = new Schema({
     email: {
         type: String,
@@ -18,6 +36,9 @@ const userSchema = new Schema({
     role: {
         type: String,
         default: "user"
+    },
+    contactLists: {
+        type: Array
     }
 });
 
