@@ -4,7 +4,7 @@ const AuthController = require('../controllers/AuthController');
 const contact = require('../models/contact');
 
 /*      GET Contacts        */
-router.get('/', AuthController.verify_token, function(req, res){
+router.post('/', AuthController.verify_token, function(req, res){
    // below or Array in User Schema containing all the contacts created by user
     contact.find({createdBy: req.decoded.email}, (err, _req) => {
         if(err)
@@ -14,7 +14,7 @@ router.get('/', AuthController.verify_token, function(req, res){
     });
 });
 
-router.get('/all', AuthController.verify_token, function(req, res){
+router.post('/all', AuthController.verify_token, function(req, res){
     if(req.decoded.role == 'admin'){
         contact.find({},(err, _req) => {
             if(err)

@@ -3,8 +3,8 @@ const router = express.Router();
 const AuthController = require('../controllers/AuthController');
 const service = require('../models/service');
 
-/*      GET Services        */
-router.get('/', AuthController.verify_token, function (req, res) {
+/*      Get Services        */
+router.post('/all', AuthController.verify_token, function (req, res) {
     if (req.decoded.role == 'admin') {
         service.find({}, (err, _req) => {
             if (err)

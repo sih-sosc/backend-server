@@ -6,10 +6,10 @@ const router = express.Router();
 const AuthController = require('../controllers/AuthController');
 
 /* POST Request for Registration    */
-router.post('/', AuthController._register_checks, function(req, res){
+router.post('/', AuthController._register_checks, function (req, res) {
     let newUser = new user(req.body);
     newUser.save((err, usr) => {
-        if(err)
+        if (err)
             res.status(500).send(err);
         else
             res.status(200).json(usr);

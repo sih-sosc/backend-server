@@ -4,7 +4,7 @@ const AuthController = require('../controllers/AuthController');
 const user = require('../models/user');
 
 /* GET home page. */
-router.get('/', AuthController.verify_token, function(req, res, next) {
+router.post('/', AuthController.verify_token, function(req, res, next) {
  user.find({email: req.decoded.email}, (err, _req) => {
     if(err)
       res.status(500).send(err);

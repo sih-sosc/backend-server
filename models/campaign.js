@@ -7,16 +7,28 @@ const campaignSchema = new Schema({
         required: true,
         unique: true
     },
+    created_by: {
+        type: String,
+        required: true
+    },
     total: {
-        type: int,
+        type: String,
         required: true
     },
     success: {
-        type: int,
+        type: String,
         required: true
     },
     template:{
         type: String
+    },
+    to: {
+        type: String,
+        required: true
+    }
+},{
+    timestamps:{
+        createdAt: 'created_at'
     }
 });
 

@@ -16,6 +16,7 @@ const contactRouter = require('./routes/contacts');
 const addContactRouter = require('./routes/add_contact');
 const trackRouter = require('./routes/track');
 const scheduleRouter = require('./routes/schedules');
+const campaignRouter = require('./routes/campaigns');
 
 const app = express();
 
@@ -46,6 +47,7 @@ app.use('/contacts', contactRouter);
 app.use('/add_contact', addContactRouter);
 app.use('/track', trackRouter);
 app.use('/schedules', scheduleRouter);
+app.use('/campaign', campaignRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

@@ -5,7 +5,7 @@ const AuthController = require('../controllers/AuthController');
 const scheduleModel = require('../models/_schedule');
 
 // Schedule a New Job
-router.post('/', AuthController.verify_token, function (req, res) {
+router.post('/new', AuthController.verify_token, function (req, res) {
     var year = req.body.year;
     var month = req.body.month - 1;
     var date = req.body.date;
@@ -43,7 +43,7 @@ router.post('/', AuthController.verify_token, function (req, res) {
 });
 
 //Listing Scheduled Jobs of current user
-router.get('/', AuthController.verify_token, function (req, res) {
+router.post('/', AuthController.verify_token, function (req, res) {
     scheduleModel.find({ created_by: req.decoded.email }, (err, _req) => {
         if (err)
             res.status(500).json("");
@@ -53,7 +53,7 @@ router.get('/', AuthController.verify_token, function (req, res) {
 });
 
 //Listing All Scheduled Jobs
-router.get('/all', AuthController.verify_token, function (req, res) {
+router.post('/all', AuthController.verify_token, function (req, res) {
     if (req.decoded.role == 'admin') {
         scheduleModel.find({}, (err, _req) => {
             if (err)
