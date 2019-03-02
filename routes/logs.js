@@ -24,4 +24,15 @@ router.get('/', AuthController.verify_token, function(req, res, next){
     });
 });
 
+router.delete('/', AuthController.verify_token, function(req, res){
+    if(req.decoded.role == 'admin'){
+        log.remove({}, (err, _req) => {
+            if(err)
+                res.status(500).send(err);
+            else
+                res.status(200).json(_req);
+        });
+    }
+});
+
 module.exports = router;

@@ -51,7 +51,7 @@ View schedules by current User.
 
 GET : `/schedules/all`
 View all the Schedules.  
-[NEED ADMIN PERMISSION]  
+[NEED ADMIN PERMISSION]
 
 ## TRACK LINK 
 `/track/<campaign_id>/<contact_id>`  

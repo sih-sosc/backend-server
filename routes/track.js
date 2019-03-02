@@ -1,19 +1,22 @@
 const express = require('express');
 const router = express.Router();
 const log = require('../models/log');
+const AuthController = require('../controllers/AuthController');
 
 /*      GET Request         */
 router.get('/:campaign_id/:contact_id', function(req, res){
-    req.logger.campaign_id = req.params.campaign_id;
-    req.logger.contact_id =  req.params.contact_id;
-    req.logger.success = true;
+    logger = {};
+    logger.campaign_id = req.params.campaign_id;
+    logger.contact_id =  req.params.contact_id;
+    logger.success = true;
 
-    let newLog = new log(req.logger);
+    let newLog = new log(logger);
     newLog.save((err, _req) => {
         if(err)
-            res.status(500)
+            res.status(500).send(err);
         else   
-            res.status(200)
+            //res.sendFile(__dirname + 'weird.png');
+            res.status(200).send("Done BOi");
     });
 });
 

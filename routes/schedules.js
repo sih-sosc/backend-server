@@ -53,7 +53,7 @@ router.get('/', AuthController.verify_token, function (req, res) {
 });
 
 //Listing All Scheduled Jobs
-router.get('/all', function (req, res) {
+router.get('/all', AuthController.verify_token, function (req, res) {
     if (req.decoded.role == 'admin') {
         scheduleModel.find({}, (err, _req) => {
             if (err)
