@@ -10,7 +10,7 @@ router.get('/', function(req, res, next) {
       res.status(500).send('Something Went Wrong');
     else
       res.status(200).json(usr);
-  })
+  });
 });
 
 module.exports = router;
