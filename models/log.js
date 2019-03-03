@@ -10,7 +10,7 @@ const logSchema = new Schema ({
         type: String,
         required: true
     },
-    success: {
+    read: {
         type: Boolean
     }
 });

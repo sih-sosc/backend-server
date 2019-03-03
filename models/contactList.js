@@ -8,6 +8,9 @@ const contactListSchema = new Schema({
     },
     created_by: {
         type: String
+    },
+    contactIDs: {
+        type: [String]
     }
 }, {
         timestamps: {
@@ -15,4 +18,4 @@ const contactListSchema = new Schema({
         }
     });
 
-module.exports = mongoose.model('ContactLists', contactListSchema);
+module.exports = mongoose.model('contactLists', contactListSchema);

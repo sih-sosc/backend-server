@@ -17,21 +17,16 @@ router.post('/', AuthController.verify_token, function(req, res, next){
             res.status(403).send("Forbidden");
         else{
             log.find({},(err, _req) => {
+                console.log(_req);
                 if(err)
                     res.status(500).send("Error Accessing Logs");
-                else{/*
-                    campaign.find({id: _req.campaign_id},(err, _camp) =>{
-                        if(err)
-                            res.status(500).json("Eror");
-                        else
-                            res.status(200).json({
-                                created_by: _camp.created_by,
-                                total_mails: _camp.total,
-                                success_mails: _camp.success,
-                                to: _camp.to
-                            });
-                    });*/
-                    res.status(200).json(_req);
+                else{
+                    console.log("id" + _req[0].campaign_id);
+                    campaign.find({id: _req[0].campaign_id},(err, _camp) =>{
+                        
+                    });
+                    res.status(200).send("Done");
+
                 }
             });
         }

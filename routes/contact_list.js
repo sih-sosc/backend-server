@@ -12,6 +12,7 @@ router.post('/new', AuthController.verify_token, function (req, res) {
     let failed = [];
     let emails = [];
     req.body.data.created_by = req.decoded.email;
+
     /*
         for (let i = 0; i < req.body.data.length; i++){
             if(req.body.data[i][2].length < 10 || req.body.data[i][2] > 13)
@@ -24,9 +25,9 @@ router.post('/new', AuthController.verify_token, function (req, res) {
         Obj[i] = { name: req.body.data[i][0], email: req.body.data[i][1], phone: req.body.data[i][2].toString(), created_by: req.decoded.email };
         let newContact = contact(Obj[i]);
         newContact.save();
-        //emails[i] = req.body.data[i][1];
+        emails[i] = req.body.data[i][1];
     }
-    //console.log(emails);
+    console.log(emails);
     /*
         aaxios.post('http://microservices-txcxphifk.now.sh', {
             Obj
@@ -39,9 +40,9 @@ router.post('/new', AuthController.verify_token, function (req, res) {
                 console.error(error)
             });
             */
-    console.log(req.body.data);
-    let list_obj = { name: req.body.name, created_by: req.decoded.email };
-    let newContactList = new _contactList(req.body.data);
+    console.log(req.body.name);
+    let list_obj = { name: req.body.name, created_by: req.decoded.email, contactIDs: emails };
+    let newContactList = new _contactList(list_obj);
     newContactList.save();
 });
 
@@ -70,6 +71,7 @@ router.post('/', AuthController.verify_token, function (req, res) {
     });
 });
 
+// Delete All Lists
 router.delete('/', AuthController.verify_token, function (req, res) {
     if (req.decoded.role == 'admin') {
         _contactList.remove({}, (err, _req) => {
@@ -79,5 +81,18 @@ router.delete('/', AuthController.verify_token, function (req, res) {
                 res.status(200).json(_req);
         });
     }
-})
+});
+
+// Remove Specific Contact List
+router.delete('/:list_name', AuthController.verify_token, function (req, res) {
+    if (req.decoded.role == 'admin') {
+        _contactList.remove({name: req.params.list_name}, (err, _req) => {
+            if (err)
+                res.status(500).send(err);
+            else
+                res.status(200).json(_req);
+        });
+    }
+});
+
 module.exports = router;
