@@ -1,5 +1,6 @@
 #   BACKEND SERVER FOR SMART INDIA HACKATHON - 2019
 
+
 ### LIST AND INFORMATION OF ALL USERS
 GET : `/users`  
 Get Details of all the Users
@@ -56,5 +57,6 @@ View all the Schedules.
 ## TRACK LINK 
 `/track/<campaign_id>/<contact_id>`  
 Log if the Email was seen  
+
 
 

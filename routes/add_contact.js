@@ -5,6 +5,7 @@ const contact = require('../models/contact');
 const user = require('../models/user');
 
 /*      POST    add_contact     */
+
 router.post('/', AuthController.verify_token, function(req, res) {
     req.body.created_by = req.decoded.email;
     let newContact = new contact(req.body);
@@ -13,6 +14,7 @@ router.post('/', AuthController.verify_token, function(req, res) {
             res.status(500).json(err);
         else   
             res.status(200).json(usr);
+
     });
 });
 

@@ -6,6 +6,10 @@ const contactSchema = new Schema ({
         type: String,
         required: true,
     },
+    dept : {
+        type: String,
+        required: true
+    },
     email : {
         type: String,
         required: true,
@@ -16,6 +20,7 @@ const contactSchema = new Schema ({
         required: true,
         unique: true
     },
+
     created_by: {
         type: String,
         required: true
@@ -23,6 +28,7 @@ const contactSchema = new Schema ({
 },{
     timestamps:{
         createdAt: 'created_at'
+
     }
 });
 
