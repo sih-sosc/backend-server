@@ -14,9 +14,14 @@ router.get('/:campaign_id/:contact_id', function(req, res){
     newLog.save((err, _req) => {
         if(err)
             res.status(500).send(err);
-        else   
-            //res.sendFile(__dirname + 'weird.png');
-            res.status(200).send("Done BOi");
+        else  {
+            var fs = require('fs');
+            fs.readFile('weird.png',function(err,data){
+              res.writeHead('200', {'Content-Type': 'image/png'});
+              res.end(data,'binary');
+            });
+        } 
+            
     });
 });
 

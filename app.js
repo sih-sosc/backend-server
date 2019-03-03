@@ -17,6 +17,8 @@ const addContactRouter = require('./routes/add_contact');
 const trackRouter = require('./routes/track');
 const scheduleRouter = require('./routes/schedules');
 const campaignRouter = require('./routes/campaigns');
+const emailRouter = require('./routes/send_email');
+const contactListRouter = require('./routes/contact_list');
 
 const app = express();
 
@@ -48,6 +50,8 @@ app.use('/add_contact', addContactRouter);
 app.use('/track', trackRouter);
 app.use('/schedules', scheduleRouter);
 app.use('/campaign', campaignRouter);
+app.use('/send_email', emailRouter);
+app.use('/contact_list', contactListRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
