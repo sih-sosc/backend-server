@@ -9,12 +9,16 @@ const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 const loginRouter = require('./routes/login');
 const registerRouter = require('./routes/register');
-const logRouter = require('./routes/view_logs');
+const logRouter = require('./routes/logs');
 const dashboardRouter = require('./routes/dashboard');
 const serviceRouter = require('./routes/services');
 const contactRouter = require('./routes/contacts');
 const addContactRouter = require('./routes/add_contact');
 const trackRouter = require('./routes/track');
+const scheduleRouter = require('./routes/schedules');
+const campaignRouter = require('./routes/campaigns');
+const emailRouter = require('./routes/send_email');
+const contactListRouter = require('./routes/contact_list');
 
 const app = express();
 
@@ -38,12 +42,16 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/login', loginRouter);
 app.use('/register', registerRouter);
-app.use('/view_logs', logRouter);
+app.use('/logs', logRouter);
 app.use('/dashboard', dashboardRouter);
 app.use('/services', serviceRouter);
 app.use('/contacts', contactRouter);
 app.use('/add_contact', addContactRouter);
 app.use('/track', trackRouter);
+app.use('/schedules', scheduleRouter);
+app.use('/campaign', campaignRouter);
+app.use('/send_email', emailRouter);
+app.use('/contact_list', contactListRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

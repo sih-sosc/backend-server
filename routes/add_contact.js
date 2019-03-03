@@ -5,20 +5,16 @@ const contact = require('../models/contact');
 const user = require('../models/user');
 
 /*      POST    add_contact     */
-router.post('/', AuthController.verify_token, function (req, res) {
-    user.find({ email: req.decoded.email }, (err, _req) => {
-        if (err)
-            res.status(500).send("Authentication Error. Please Login Again");
-        else {
-            req.body.createdBy = req.decoded.email;
-            let newContact = new contact(req.body);
-            newContact.save((err, usr) => {
-                if (err)
-                    res.status(500).send("Error Saving Contact");
-                else
-                    res.status(200).json(usr);
-            });
-        }
+
+router.post('/', AuthController.verify_token, function(req, res) {
+    req.body.created_by = req.decoded.email;
+    let newContact = new contact(req.body);
+    newContact.save((err, usr) => {    
+        if(err)
+            res.status(500).json(err);
+        else   
+            res.status(200).json(usr);
+
     });
 });
 

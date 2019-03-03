@@ -20,9 +20,15 @@ const contactSchema = new Schema ({
         required: true,
         unique: true
     },
-    createdBy: {
+
+    created_by: {
         type: String,
         required: true
+    }
+},{
+    timestamps:{
+        createdAt: 'created_at'
+
     }
 });
 

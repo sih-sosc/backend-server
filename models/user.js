@@ -38,7 +38,18 @@ const userSchema = new Schema({
         default: "user"
     },
     contactLists: {
-        type: Array
+
+        type: [String]
+    },
+    serviceEmail: {
+        type: String,
+        default: "None"
+    },
+    servicePassword: {
+        type: String,
+        default: "None"
+
+
     }
 });
 

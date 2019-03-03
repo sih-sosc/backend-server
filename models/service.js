@@ -17,6 +17,9 @@ const serviceSchema = new Schema ({
     },
     auth_key: {
         type: String
+    },
+    isAvailable: {
+        type: Boolean
     }
 });
 
